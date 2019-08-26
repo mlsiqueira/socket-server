@@ -10,7 +10,7 @@ router.get('/mensagens', (req: Request, resp: Response) => {
 });
 
 router.post('/mensagens', (req: Request, resp: Response) => {
-  const { from, msg } = req.body;
+  const { from, msg } = req.body;  // posso fazer isso devido ao bodyParser
   console.log(req.body)
   //> para testar: curl -X POST -d "from=Mussum&msg=As biritis ta prontis" http://localhost:5000/mensagens
   //> testar no postman: POST > Body > x-www-form-urlencoded > preencho a tabela

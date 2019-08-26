@@ -1,4 +1,4 @@
-import Server from './src/server';
+import Server from './models/server';
 import router from './routes/router';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -7,7 +7,7 @@ const server = new Server();
 
 // basicamente: o que me enviar transforme em um json
 server.app.use(bodyParser.urlencoded({ extended: true }));
-server.app.use(bodyParser.json())
+server.app.use(bodyParser.json()) // agora posso pegar os dados com: req.body.<lorem>
 
 server.app.use(cors({ origin: true, credentials: true }));
 
