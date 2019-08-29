@@ -2,7 +2,8 @@ import express, { Application } from 'express';
 import http from 'http';
 import socketIo from 'socket.io';
 
-import { environment } from '../environment/environment';
+import environment from '../environment/environment';
+import sockets from '../sockets/sockets';
 
 export default class Server {
 
@@ -33,9 +34,12 @@ export default class Server {
 
 
   private listenSockets() {
-    console.log('Escutando conexões...');
-    this.io.on('connection', () => {
-      console.log('Novo cliente conectado: ');
+    console.log('Escutando conexões:');
+    this.io.on('connection', client => {
+      console.log('Chegou o disco voador...');
+
+      sockets.onDisconnect(client);
+      sockets.message(client);
     })
   }
 
