@@ -5,7 +5,7 @@ import cors from 'cors';
 
 const server = Server.instance;
 
-// basicamente: o que me enviar transforme em um json
+// basicamente: o que me enviar transforme em um JSON:
 server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json()) // agora posso pegar os dados com: req.body.<lorem>
 

@@ -39,7 +39,7 @@ export default class Server {
       console.log('Chegou o disco voador...');
 
       sockets.onDisconnect(client);
-      sockets.message(client);
+      sockets.message(client, this.io);
     })
   }
 

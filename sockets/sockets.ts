@@ -1,4 +1,4 @@
-import { Socket } from 'socket.io';
+import { Socket, Server } from 'socket.io';
 
 namespace sockets {
 
@@ -8,10 +8,14 @@ namespace sockets {
     });
   }
 
-  export const message = (client: Socket) => {
+  export const message = (client: Socket, server: Server) => {
     client.on('message', (payload) => {
       console.log('Msg recebida: ', payload);
+
+      const { body } = payload;
+      server.emit('new-message', { body, from: 'server'})
     })
+
   }
 }
 
